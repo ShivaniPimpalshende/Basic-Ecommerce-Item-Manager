@@ -1,0 +1,122 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 30px; /* space between top and bottom rows */
+}
+
+/* Top row: Add Item + Search Item */
+.top-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* wrap on smaller screens */
+}
+
+/* Bottom row: Available Items + Selected Item */
+.bottom-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Form cards styling */
+.form-card, .form-card1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+/* Add Item specific padding */
+.form-card {
+    padding: 25px;
+    width: 350px;
+}
+
+/* Search Item specific padding */
+.form-card1 {
+    padding: 40px;
+    width: 350px;
+}
+
+/* Input fields */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #00f2fe;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #4facfe;
+}
+
+/* Available Items & Selected Item boxes */
+.items, .selected-item {
+    width: 350px;
+}
+
+/* Individual item cards */
+.item-card {
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    margin: 15px auto;
+}
+
+/* Highlight Selected Item */
+.selected-item .item-card {
+    border: 2px solid #00f2fe;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+}
+
+/* Error messages */
+.error {
+    color: #ffcccc;
+    font-size: 12px;
+}
+
+/* Headings */
+h1 {
+    margin-bottom: 30px;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 900px) {
+    .top-row, .bottom-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-card, .form-card1, .items, .selected-item {
+        width: 90%;
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ecommerce Item Manager</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🛒 Ecommerce Item Management</h1>
+    <!-- SUCCESS MESSAGE -->
+<p class="success" th:if="${success}" th:text="${success}"></p>
+
+<!-- ERROR MESSAGE -->
+<p class="error" th:if="${error}" th:text="${error}"></p>
+
+    <!-- ADD ITEM FORM -->
+    <div class="form-card">
+        <h2>Add New Item</h2>
+        <form th:action="@{/add}" th:object="${item}" method="post">
+
+            <input type="text" th:field="*{name}" placeholder="Item Name">
+            <p class="error" th:if="${#fields.hasErrors('name')}"
+               th:errors="*{name}"></p>
+
+            <input type="text" th:field="*{description}" placeholder="Description">
+            <p class="error" th:if="${#fields.hasErrors('description')}"
+               th:errors="*{description}"></p>
+
+            <input type="number" step="0.01" th:field="*{price}" placeholder="Price">
+            <p class="error" th:if="${#fields.hasErrors('price')}"
+               th:errors="*{price}"></p>
+
+            <button type="submit">Add Item</button>
+        </form>
+    </div>
+
+    <!-- SEARCH ITEM BY ID -->
+     <div class="top-row">
+    <div class="form-card1">
+        <h2>Search Item By ID</h2>
+        <form th:action="@{/search}" method="get">
+            <input type="number" name="id" placeholder="Enter Item ID" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- DISPLAY SINGLE ITEM -->
+    <div th:if="${selectedItem != null}" class="selected-item">
+        <h2>Selected Item</h2>
+        <div class="item-card highlight">
+            <h3 th:text="${selectedItem.name}"></h3>
+            <p th:text="${selectedItem.description}"></p>
+            <strong>₹ <span th:text="${selectedItem.price}"></span></strong>
+        </div>
+    </div>
+</div>
+    <!-- ALL ITEMS LIST -->
+     <div class = "bottom-row">
+    <h2>Available Items</h2>
+    <div class="items">
+        <div class="item-card" th:each="item : ${items}">
+            <p>ID: <span th:text="${item.id}"></span></p>
+            <h3 th:text="${item.name}"></h3>
+            <p th:text="${item.description}"></p>
+            <strong>₹ <span th:text="${item.price}"></span></strong>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
